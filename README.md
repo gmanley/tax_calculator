@@ -9,11 +9,12 @@ You can run `bin/setup` to install dependencies.
 
 The main CLI executable to run the program is located at: `exe/tax_calculator`. This CLI can take either a path to a text file or via executing the CLI with no args, pasting in the input and then running CTRL-D to indicate an EOF.
 
+### Example
 After running installation (`bin/setup`):
 
 `cd tax_calculator`
 
-`./exe/tax_calculator /path/to/item_list_file.txt`
+`exe/tax_calculator spec/fixtures/input1.txt`
 
 ## Development
 
