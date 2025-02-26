@@ -1,17 +1,25 @@
 require 'spec_helper'
 
 RSpec.describe TaxCalculator::LineItem do
-  let(:default_attributes) do
-    {
+  describe '#total_price' do
+    subject(:line_item) do
+      described_class.new(
+        count: 5,
+        unit_price: BigDecimal('1.00'),
+        item_name: 'box of chocolates'
+      )
+    end
 
-    }
+    it 'returns total price based on unit_price and count' do
+      expect(line_item.total_price).to eq(BigDecimal('5.00'))
+    end
   end
 
   context 'when item is a known type of food' do
     subject(:line_item) do
       described_class.new(
         count: 8,
-        price: BigDecimal('1.43'),
+        unit_price: BigDecimal('1.43'),
         item_name: 'box of chocolates'
       )
     end
@@ -41,7 +49,7 @@ RSpec.describe TaxCalculator::LineItem do
     subject(:line_item) do
       described_class.new(
         count: 8,
-        price: BigDecimal('1.43'),
+        unit_price: BigDecimal('1.43'),
         item_name: 'vials of insulin'
       )
     end
@@ -72,7 +80,7 @@ RSpec.describe TaxCalculator::LineItem do
     subject(:line_item) do
       described_class.new(
         count: 8,
-        price: BigDecimal('1.43'),
+        unit_price: BigDecimal('1.43'),
         item_name: 'book on pandas'
       )
     end
@@ -102,7 +110,7 @@ RSpec.describe TaxCalculator::LineItem do
     subject(:line_item) do
       described_class.new(
         count: 8,
-        price: BigDecimal('1.43'),
+        unit_price: BigDecimal('1.43'),
         item_name: 'gaming mouse'
       )
     end

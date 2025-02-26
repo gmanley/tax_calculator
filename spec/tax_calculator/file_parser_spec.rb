@@ -40,7 +40,7 @@ RSpec.describe TaxCalculator::InputParser do
       end
 
       it 'parses line item price into BigDecimal' do
-        expect(result.first.price).to eq(BigDecimal('4.87'))
+        expect(result.first.unit_price).to eq(BigDecimal('4.87'))
       end
     end
   end

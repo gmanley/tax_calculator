@@ -1,10 +1,8 @@
-require 'bigdecimal'
-
 module TaxCalculator
   class InputParser
     class InvalidInput < Error; end
 
-    LINE_PATTERN = /^(?<item_count>\d+) (?<item_name>.+) at (?<price>\d+\.\d{2})$/
+    LINE_PATTERN = /^(?<item_count>\d+) (?<item_name>.+) at (?<unit_price>\d+\.\d{2})$/
 
     def initialize(file_contents)
       @file_contents = file_contents
@@ -24,7 +22,7 @@ module TaxCalculator
         LineItem.new(
           count: Integer(line_match[:item_count]),
           item_name: line_match[:item_name],
-          price: BigDecimal(line_match[:price]),
+          unit_price: BigDecimal(line_match[:unit_price]),
         )
       else
         raise InvalidInput, "Line #{line_number} of file is invalid."

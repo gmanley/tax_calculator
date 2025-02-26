@@ -2,4 +2,4 @@
 
 require File.expand_path('../lib/tax_calculator', __dir__)
 
-puts 'Hello World'
+TaxCalculator::CLI.new(ARGF.read).call

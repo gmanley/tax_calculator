@@ -15,12 +15,22 @@ module TaxCalculator
       /\bbook(s?)/
     ]
 
-    attr_reader :count, :item_name, :price
+    IMPORT_MATCHER = /\bimported\b/
 
-    def initialize(count:, item_name:, price:)
+    attr_reader :count, :item_name, :unit_price
+
+    def initialize(count:, item_name:, unit_price)
       @count = count
       @item_name = item_name
-      @price = price
+      @unit_price = unit_price
+    end
+
+    def total_price
+      unit_price * count
+    end
+
+    def import?
+      IMPORT_MATCHER.match?(item_name)
     end
 
     def type
