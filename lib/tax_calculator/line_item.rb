@@ -19,7 +19,7 @@ module TaxCalculator
 
     attr_reader :count, :item_name, :unit_price
 
-    def initialize(count:, item_name:, unit_price)
+    def initialize(count:, item_name:, unit_price:)
       @count = count
       @item_name = item_name
       @unit_price = unit_price

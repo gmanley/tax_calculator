@@ -5,7 +5,7 @@ module TaxCalculator
     end
 
     def call
-      line_items = InputParser.new(file_contents).parse
+      line_items = InputParser.new(@file_contents).parse
       print ReceiptFormatter.new(line_items).call
     end
   end
